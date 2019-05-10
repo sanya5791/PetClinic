@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+<h3>Names List:</h3>
+
+<table style="background-color:antiquewhite">
+
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <tr th:if="${names.isEmpty()}">
+        <td colspan="2">No Users</td>
+    </tr>
+    <tr th:each="user : ${names}">
+        <td><span th:text="${user.getFirstName()}">First Name</span> </td>
+        <td><span th:text="${user.getLastName()}">Last Name</span> </td>
+    </tr>
+    </tbody>
+
+</table>
+<br>
+
+<a href="/addname">Add New Name</a>
+</body>
+
+</html>

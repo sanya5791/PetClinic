@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        ul li::before {
+            content: "\2022";
+            color: red;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        li {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<h3>Add New Name:</h3>
+
+<body>
+
+<!--<form th:action="@{/addname}" th:object="${form1}" method="post">-->
+<form th:action="@{/addname}" th:object="${userForm}" method="post">
+    First name:
+    <br>
+    <input type="text" th:name="firstName" th:field="*{firstName}">
+    <br>
+
+    First name:
+    <br>
+    <input type="text" th:name="lastName" th:field="*{lastName}">
+    <br>
+    <br>
+
+    <input type="submit" value="Submit">
+
+    <ul th:if="${#fields.hasErrors('*')}" class="errorlist">
+        <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+    </ul>
+</form>
+<br>
+
+</body>
+
+</html>

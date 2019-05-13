@@ -1,7 +1,16 @@
 package com.akhutornoy.petclinic.domain.db
 
-inline class FirstName(val value: String)
-inline class LastName(val value: String)
+import javax.persistence.*
 
+@Entity
+class UserEntity(
+        @Column(name = "first_name")
+        var firstName: String,
 
-data class UserEntity(val firstName: FirstName, val lastName: LastName)
+        @Column(name = "last_name")
+        var lastName: String,
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Long? = null
+)

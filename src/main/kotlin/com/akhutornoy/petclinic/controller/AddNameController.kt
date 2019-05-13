@@ -3,6 +3,7 @@ package com.akhutornoy.petclinic.controller
 import com.akhutornoy.petclinic.controller.AddNameController.Companion.END_POINT
 import com.akhutornoy.petclinic.domain.ui.UserForm
 import com.akhutornoy.petclinic.service.NamesServiceImpl
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult

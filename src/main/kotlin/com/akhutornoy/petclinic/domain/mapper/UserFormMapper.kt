@@ -5,5 +5,5 @@ import com.akhutornoy.petclinic.domain.ui.UserForm
 
 class UserFormMapper {
     fun map(source: UserEntity) =
-            UserForm(firstName = source.firstName.value, lastName = source.lastName.value)
+            UserForm(firstName = source.firstName, lastName = source.lastName)
 }

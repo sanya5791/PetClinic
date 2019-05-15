@@ -2,7 +2,7 @@ package com.akhutornoy.petclinic.controller
 
 import com.akhutornoy.petclinic.controller.AddHostController.Companion.END_POINT
 import com.akhutornoy.petclinic.domain.ui.HostForm
-import com.akhutornoy.petclinic.service.HostsServiceImpl
+import com.akhutornoy.petclinic.service.HostsService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
@@ -15,7 +15,7 @@ import javax.validation.Valid
 @RequestMapping(END_POINT)
 @Validated
 class AddHostController(
-        private val hostsService: HostsServiceImpl
+        private val hostsService: HostsService
 ) {
 
     @GetMapping

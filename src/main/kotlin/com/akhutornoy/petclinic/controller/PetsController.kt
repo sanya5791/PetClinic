@@ -1,7 +1,7 @@
 package com.akhutornoy.petclinic.controller
 
 import com.akhutornoy.petclinic.domain.ui.PetForm
-import com.akhutornoy.petclinic.service.HostsServiceImpl
+import com.akhutornoy.petclinic.service.HostsService
 import com.akhutornoy.petclinic.service.PetsService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -14,7 +14,7 @@ import javax.validation.Valid
 @RequestMapping("/pets")
 class PetsController(
         private val petsService: PetsService,
-        private val hostsService: HostsServiceImpl
+        private val hostsService: HostsService
 ) {
 
     private var hostId: Long = 0

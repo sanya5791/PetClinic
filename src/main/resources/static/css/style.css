@@ -1,0 +1,26 @@
+h1 {
+    color: #0000FF;
+}
+
+h2 {
+    color: #FF0000;
+}
+
+h3 {
+    color: #0000FF;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #0000FF;
+    background-color: antiquewhite
+}
+
+table td {
+    border: 1px solid #0000FF;
+}
+
+table th, table td {
+    padding: 5px;
+}
+

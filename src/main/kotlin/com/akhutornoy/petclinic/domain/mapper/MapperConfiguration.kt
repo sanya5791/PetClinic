@@ -15,4 +15,13 @@ class MapperConfiguration {
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     fun userEntityMapper() = UserEntityMapper()
+
+    @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    fun petFormMapper() = PetFormMapper()
+
+    @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    fun petEntityMapper() = PetEntityMapper()
+
 }

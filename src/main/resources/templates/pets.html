@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+
+<body>
+
+<h5><a href="/names"><< Back</a></h5>
+
+<h3>Pets of '<span th:text="${hostName}"></span>'</h3>
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Breed</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <tr th:if="${pets.isEmpty()}">
+        <td colspan="2">No Pets</td>
+    </tr>
+    <tr th:each="pet : ${pets}">
+        <td><span th:text="${pet.getName()}">Name</span> </td>
+        <td><span th:text="${pet.getBreed()}">Breed</span> </td>
+    </tr>
+    </tbody>
+
+</table>
+<br>
+
+<hr>
+
+<h4>Add new Pet:</h4>
+
+<form th:action="@{/pets}" th:object="${petForm}" method="post">
+    Name:
+    <input type="text" th:name="name" th:field="*{name}">
+    <br>
+
+    Breed:
+    <input type="text" th:name="breed" th:field="*{breed}">
+    <br>
+    <br>
+
+    <input type="submit" value="Add Pet">
+
+</form>
+<br>
+
+</body>
+
+</html>

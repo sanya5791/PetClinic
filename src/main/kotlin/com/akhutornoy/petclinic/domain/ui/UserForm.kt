@@ -10,4 +10,7 @@ data class UserForm(
 
         @NotBlank(message = "Last Name Must Not be Blank")
         @Size(min = 5, max = 5, message = "too short 'Last Name'")
-        val lastName: String = "Last")
+        val lastName: String = "Last",
+
+        val id: Long? = null
+)

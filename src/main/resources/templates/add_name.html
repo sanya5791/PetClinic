@@ -29,14 +29,13 @@
 
 <body>
 
-<!--<form th:action="@{/addname}" th:object="${form1}" method="post">-->
 <form th:action="@{/addname}" th:object="${userForm}" method="post">
     First name:
     <br>
     <input type="text" th:name="firstName" th:field="*{firstName}">
     <br>
 
-    First name:
+    Last name:
     <br>
     <input type="text" th:name="lastName" th:field="*{lastName}">
     <br>

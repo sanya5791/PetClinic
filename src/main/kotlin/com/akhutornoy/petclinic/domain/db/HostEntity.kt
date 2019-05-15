@@ -3,7 +3,7 @@ package com.akhutornoy.petclinic.domain.db
 import javax.persistence.*
 
 @Entity
-class UserEntity(
+class HostEntity(
         @Column(name = "first_name")
         var firstName: String,
 

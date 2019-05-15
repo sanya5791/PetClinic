@@ -10,11 +10,11 @@ class MapperConfiguration {
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    fun userFormMapper() = UserFormMapper()
+    fun userFormMapper() = HostFormMapper()
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    fun userEntityMapper() = UserEntityMapper()
+    fun userEntityMapper() = HostEntityMapper()
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)

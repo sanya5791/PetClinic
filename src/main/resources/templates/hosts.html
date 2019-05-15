@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="US">
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<h3>Names List:</h3>
+<h3>Hosts List:</h3>
 
 <table>
 
@@ -20,14 +20,14 @@
     </thead>
 
     <tbody>
-    <tr th:if="${names.isEmpty()}">
-        <td colspan="3">No Users</td>
+    <tr th:if="${hosts.isEmpty()}">
+        <td colspan="3">No Hosts</td>
     </tr>
-    <tr th:each="user : ${names}">
-        <td><span th:text="${user.getFirstName()}">First Name</span></td>
-        <td><span th:text="${user.getLastName()}">Last Name</span></td>
+    <tr th:each="host : ${hosts}">
+        <td><span th:text="${host.getFirstName()}">First Name</span></td>
+        <td><span th:text="${host.getLastName()}">Last Name</span></td>
         <td>
-            <a th:href="@{/pets(host-id=${user.getId()})}">Pets...</a>
+            <a th:href="@{/pets(host-id=${host.getId()})}">Pets...</a>
         </td>
     </tr>
     </tbody>
@@ -35,7 +35,7 @@
 </table>
 <br>
 
-<a href="/addname">Add New Name</a>
+<a href="/addhost">Add New Host</a>
 </body>
 
 </html>

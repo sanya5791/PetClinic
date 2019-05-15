@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="US">
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,19 +25,23 @@
 
 </head>
 
-<h3>Add New Name:</h3>
+<h3>Add New Host:</h3>
 
 <body>
 
-<form th:action="@{/addname}" th:object="${userForm}" method="post">
+<form th:action="@{/addhost}" th:object="${hostForm}" method="post">
     First name:
     <br>
-    <input type="text" th:name="firstName" th:field="*{firstName}">
+    <label>
+        <input type="text" th:name="firstName" th:field="*{firstName}">
+    </label>
     <br>
 
     Last name:
     <br>
-    <input type="text" th:name="lastName" th:field="*{lastName}">
+    <label>
+        <input type="text" th:name="lastName" th:field="*{lastName}">
+    </label>
     <br>
     <br>
 

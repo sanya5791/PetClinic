@@ -1,7 +1,7 @@
 package com.akhutornoy.petclinic.controller
 
 import com.akhutornoy.petclinic.domain.ui.PetForm
-import com.akhutornoy.petclinic.service.NamesServiceImpl
+import com.akhutornoy.petclinic.service.HostsServiceImpl
 import com.akhutornoy.petclinic.service.PetsService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -14,7 +14,7 @@ import javax.validation.Valid
 @RequestMapping("/pets")
 class PetsController(
         private val petsService: PetsService,
-        private val namesService: NamesServiceImpl
+        private val hostsService: HostsServiceImpl
 ) {
 
     private var hostId: Long = 0
@@ -24,13 +24,13 @@ class PetsController(
                 @RequestParam(value = "host-id", required = true) hostIdParam: String
     ): String {
         this.hostId = hostIdParam.toLong()
-        val userForm = namesService.getUserById(hostId)
+        val hostForm = hostsService.getById(hostId)
 
         val hostName =
-                if(userForm != null)
-                    "${userForm.firstName} ${userForm.lastName}"
+                if(hostForm != null)
+                    "${hostForm.firstName} ${hostForm.lastName}"
                 else
-                    "Name Not Found"
+                    "Host Name Not Found"
         model.addAttribute("hostName", hostName)
 
         val pets = petsService.getPetsByHostId(hostId)

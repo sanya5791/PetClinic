@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="US">
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +8,7 @@
 
 <body>
 
-<h5><a href="/names"><< Back</a></h5>
+<h5><a href="/hosts"><< Back</a></h5>
 
 <h3>Pets of '<span th:text="${hostName}"></span>'</h3>
 
@@ -23,7 +23,7 @@
 
     <tbody>
     <tr th:if="${pets.isEmpty()}">
-        <td colspan="2">No Pets</td>
+        <td colspan="2">No Pets found</td>
     </tr>
     <tr th:each="pet : ${pets}">
         <td><span th:text="${pet.getName()}">Name</span> </td>
@@ -40,11 +40,15 @@
 
 <form th:action="@{/pets}" th:object="${petForm}" method="post">
     Name:
-    <input type="text" th:name="name" th:field="*{name}">
+    <label>
+        <input type="text" th:name="name" th:field="*{name}">
+    </label>
     <br>
 
     Breed:
-    <input type="text" th:name="breed" th:field="*{breed}">
+    <label>
+        <input type="text" th:name="breed" th:field="*{breed}">
+    </label>
     <br>
     <br>
 

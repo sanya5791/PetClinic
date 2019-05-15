@@ -1,28 +1,25 @@
 package com.akhutornoy.petclinic.controller
 
-import com.akhutornoy.petclinic.service.NamesServiceImpl
+import com.akhutornoy.petclinic.service.HostsServiceImpl
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 
-inline class Name(val value: String)
-
-
 @Controller
-class NamesController(
-        private val namesService: NamesServiceImpl
+class HostsController(
+        private val hostsService: HostsServiceImpl
 ) {
 
     @GetMapping(path = [END_POINT_ROOT, END_POINT_INDEX, END_POINT])
-    fun getNames(model: Model): String {
-        val names = namesService.getAllUsers()
-        model.addAttribute("names", names)
+    fun getHosts(model: Model): String {
+        val hosts = hostsService.getAll()
+        model.addAttribute("hosts", hosts)
 
-        return "names"
+        return "hosts"
     }
 
     companion object {
-        const val END_POINT = "/names"
+        const val END_POINT = "/hosts"
         const val END_POINT_ROOT = "/"
         const val END_POINT_INDEX = "/index.html"
     }

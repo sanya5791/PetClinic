@@ -1,9 +1,8 @@
 package com.akhutornoy.petclinic.controller
 
-import com.akhutornoy.petclinic.controller.AddNameController.Companion.END_POINT
-import com.akhutornoy.petclinic.domain.ui.UserForm
-import com.akhutornoy.petclinic.service.NamesServiceImpl
-import org.springframework.beans.factory.annotation.Autowired
+import com.akhutornoy.petclinic.controller.AddHostController.Companion.END_POINT
+import com.akhutornoy.petclinic.domain.ui.HostForm
+import com.akhutornoy.petclinic.service.HostsServiceImpl
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
@@ -15,38 +14,38 @@ import javax.validation.Valid
 @Controller
 @RequestMapping(END_POINT)
 @Validated
-class AddNameController(
-        private val namesService: NamesServiceImpl
+class AddHostController(
+        private val hostsService: HostsServiceImpl
 ) {
 
     @GetMapping
     fun showEmptyForm(model: Model): String {
-        model.addAttribute(FORM_NAME, UserForm(firstName = ""))
-        return "add_name"
+        model.addAttribute(FORM_HOST, HostForm(firstName = ""))
+        return "add_host"
     }
 
     @PostMapping
-    fun addName(@Valid @ModelAttribute(FORM_NAME) form: UserForm,
+    fun addHost(@Valid @ModelAttribute(FORM_HOST) form: HostForm,
                 bindingResult: BindingResult): String {
 
 //             TODO: fix validation
         if (bindingResult.hasErrors()) {
-            return "add_name"
+            return "add_host"
         }
 
-        namesService.addName(form)
-        return "redirect:" + NamesController.END_POINT
+        hostsService.add(form)
+        return "redirect:" + HostsController.END_POINT
     }
 
     @ExceptionHandler(Throwable::class)
     fun handleError(error: Throwable, response: HttpServletResponse): String {
         error.printStackTrace()
-        return "names"
+        return "hosts"
     }
 
     companion object {
-        const val END_POINT = "/addname"
-        const val FORM_NAME = "userForm"
+        const val END_POINT = "/addhost"
+        const val FORM_HOST = "hostForm"
     }
 
 }

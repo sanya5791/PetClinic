@@ -12,4 +12,10 @@ class PetEntityMapper {
             petForm.id
     )
 
+    fun map(name: String, breed: String, hostId: Long) = PetEntity(
+            name,
+            breed,
+            hostId
+    )
+
 }

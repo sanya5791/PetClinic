@@ -1,5 +1,6 @@
 package com.akhutornoy.petclinic.controller
 
+import com.akhutornoy.petclinic.controller.PetsController.Companion.END_POINT
 import com.akhutornoy.petclinic.domain.ui.PetForm
 import com.akhutornoy.petclinic.service.HostsService
 import com.akhutornoy.petclinic.service.PetsService
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse
 import javax.validation.Valid
 
 @Controller
-@RequestMapping("/pets")
+@RequestMapping(END_POINT)
 class PetsController(
         private val petsService: PetsService,
         private val hostsService: HostsService
@@ -47,18 +48,22 @@ class PetsController(
 
 //             TODO: fix validation
         if (bindingResult.hasErrors()) {
-            return "pets?host-id=$hostId"
+            return "$END_POINT?host-id=$hostId"
         }
 
         petForm.hostId = hostId
         petsService.addPet(petForm)
-        return "redirect:" + "/pets?host-id=$hostId"
+        return "redirect:$END_POINT?host-id=$hostId"
     }
 
     @ExceptionHandler(Throwable::class)
     fun handleError(error: Throwable, response: HttpServletResponse): String {
         error.printStackTrace()
         return "pets"
+    }
+
+    companion object {
+        const val END_POINT = "/pets"
     }
 
 }

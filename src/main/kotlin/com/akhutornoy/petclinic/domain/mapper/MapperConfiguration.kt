@@ -24,4 +24,12 @@ class MapperConfiguration {
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     fun petEntityMapper() = PetEntityMapper()
 
+    @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    fun hostDtoMapper() = HostDtoMapper()
+
+    @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    fun petDtoMapper() = PetDtoMapper()
+
 }

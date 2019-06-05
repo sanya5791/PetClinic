@@ -27,21 +27,28 @@ class RestController(
         return hostsService.add(hostDto)
     }
 
-    @GetMapping(path = [PetsController.END_POINT], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
-    fun getPets(
-            @RequestParam(value = "host_id") hostId: String
-    ): List<PetDto> {
-        return petsService.getPetsByHostId(hostId.toLong())
+    @GetMapping(path = [AddHostController.DELETE_HOST], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
+    fun deleteHost(@RequestParam(value = "host_id") hostId: Long) {
+        hostsService.delete(hostId)
     }
 
-    @PostMapping(path = [PetsController.END_POINT], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
-    fun addPet(
-            @RequestParam(value = "name", required = true) name: String,
-            @RequestParam(value = "breed", required = true) breed: String,
-            @RequestParam(value = "host_id", required = true) hostId: Long
+    @GetMapping(path = [PetsController.END_POINT], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
+    fun getPets(
+            @RequestParam(value = "host_id") hostId: Long
+    ): List<PetDto> {
+        return petsService.getPetsByHostId(hostId)
+    }
 
-    ) {
-        petsService.addPet(name, breed, hostId)
+    @PostMapping(path = [PetsController.ADD_PET], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
+    fun addPet(@RequestBody petDto: PetDto
+
+    ): PetDto {
+        return petsService.addPet(petDto)
+    }
+
+    @GetMapping(path = [PetsController.DELETE_PET], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
+    fun deletePet(@RequestParam(value = "pet_id") petId: Long) {
+        petsService.delete(petId)
     }
 
 }

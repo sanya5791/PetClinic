@@ -13,14 +13,19 @@ class PetsRestServiceImpl(
         private val petDtoMapper: PetDtoMapper
 ) : PetsRestService {
 
-    override fun addPet(name: String, breed: String, hostId: Long) {
-        val pet = petEntityMapper.map(name, breed, hostId)
-        dbPet.save(pet)
+    override fun addPet(petDto: PetDto): PetDto {
+        val pet = petEntityMapper.map(petDto)
+        val petEntity = dbPet.save(pet)
+        return petDtoMapper.map(petEntity)
     }
 
     override fun getPetsByHostId(hostId: Long): List<PetDto> {
         return dbPet.findByHostId(hostId)
                 .map(petDtoMapper::map)
+    }
+
+    override fun delete(petId: Long) {
+        dbPet.deleteById(petId)
     }
 
 }

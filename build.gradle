@@ -16,15 +16,31 @@ repositories {
     mavenCentral()
 }
 
+//bootJar {
+//    baseName = 'gs-authenticating-ldap'
+////    archiveBaseName = 'gs-authenticating-ldap'
+//    version =  '0.1.0'
+//}
+
 dependencies {
     //spring boot
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-devtools'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+
+    //spring security
+    implementation"org.springframework.boot:spring-boot-starter-security"
+//    implementation"org.springframework.ldap:spring-ldap-core"
+//    implementation"org.springframework.security:spring-security-ldap"
+//    implementation"org.springframework:spring-tx"
+//    implementation"com.unboundid:unboundid-ldapsdk"
+
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     //db
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'com.h2database:h2'
     implementation 'org.hibernate.validator:hibernate-validator'
     //kotlin
@@ -32,6 +48,7 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot.security:spring-security-test'
 }
 
 compileKotlin {

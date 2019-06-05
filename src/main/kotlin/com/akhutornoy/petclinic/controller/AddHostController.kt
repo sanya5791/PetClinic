@@ -45,6 +45,7 @@ class AddHostController(
 
     companion object {
         const val END_POINT = "/addhost"
+        const val DELETE_HOST = "/deletehost"
         const val FORM_HOST = "hostForm"
     }
 

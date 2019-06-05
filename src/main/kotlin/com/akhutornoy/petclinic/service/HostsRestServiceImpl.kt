@@ -27,4 +27,8 @@ class HostsRestServiceImpl(
         return hostDtoMapper.map(hostEntity)
     }
 
+    override fun delete(hostId: Long) {
+        db.deleteById(hostId)
+    }
+
 }

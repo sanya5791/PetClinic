@@ -64,6 +64,8 @@ class PetsController(
 
     companion object {
         const val END_POINT = "/pets"
+        const val ADD_PET = "/addpet"
+        const val DELETE_PET = "/deletepet"
     }
 
 }

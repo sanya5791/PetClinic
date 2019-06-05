@@ -7,4 +7,5 @@ interface HostsRestService {
     fun getAll(): List<HostDto>
     fun getById(userId: Long): HostDto?
     fun add(host: HostDto): HostDto
+    fun delete(hostId: Long)
 }

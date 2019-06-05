@@ -1,6 +1,7 @@
 package com.akhutornoy.petclinic.domain.mapper
 
 import com.akhutornoy.petclinic.domain.db.PetEntity
+import com.akhutornoy.petclinic.domain.rest.PetDto
 import com.akhutornoy.petclinic.domain.ui.PetForm
 
 class PetEntityMapper {
@@ -18,4 +19,10 @@ class PetEntityMapper {
             hostId
     )
 
+    fun map(source: PetDto) = PetEntity(
+            source.name,
+            source.breed,
+            source.hostId,
+            source.id
+    )
 }

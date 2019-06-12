@@ -1,6 +1,6 @@
 package com.akhutornoy.petclinic.controller
 
-import com.akhutornoy.petclinic.controller.PetsController.Companion.END_POINT
+import com.akhutornoy.petclinic.domain.db.Role
 import com.akhutornoy.petclinic.domain.ui.HostForm
 import com.akhutornoy.petclinic.domain.ui.PetForm
 import com.akhutornoy.petclinic.service.HostsService
@@ -29,20 +29,26 @@ class PetsController(
         val hostForm = getHostForm(hostIdParam, authentication)
         this.hostId = hostForm?.id ?: HOST_ID_UNDEFINED
 
-        putModelAttributes(hostForm, model)
+        putModelAttributesFromForm(hostForm, model)
+        putModelAttributesFromAuthentication(authentication, model)
 
         return "pets"
+    }
+
+    private fun putModelAttributesFromAuthentication(authentication: Authentication, model: Model) {
+        val isAdmin = Role.ADMIN == Role.valueOf(authentication.name.toUpperCase())
+        model.addAttribute("isAdmin", isAdmin)
     }
 
     private fun getHostForm(hostIdParam: String?, authentication: Authentication): HostForm? {
         return if (hostIdParam == null) {
             hostsService.getByUserName(authentication.name)
         } else {
-            hostsService.getById(hostId)
+            hostsService.getById(hostIdParam.toLong())
         }
     }
 
-    private fun putModelAttributes(hostForm: HostForm?, model: Model) {
+    private fun putModelAttributesFromForm(hostForm: HostForm?, model: Model) {
         val hostName =
                 if (hostForm != null)
                     "${hostForm.firstName} ${hostForm.lastName}"

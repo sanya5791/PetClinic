@@ -8,7 +8,12 @@
 
 <body>
 
-<h5><a href="/hosts"><< Back</a></h5>
+<h5>
+    <a href="/hosts">
+        <span th:text="${isAdmin}? '<< Back'"></span>
+    </a>
+</h5>
+
 <h5>
     <form  th:action="@{/logout}" method="post">
        <button>LOGOUT</button>

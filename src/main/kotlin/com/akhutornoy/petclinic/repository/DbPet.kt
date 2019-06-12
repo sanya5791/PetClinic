@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface DbPet : JpaRepository<PetEntity, Long> {
     fun findByHostId(hostId: Long): List<PetEntity>
+    fun deleteByHostId(hostId: Long)
 }

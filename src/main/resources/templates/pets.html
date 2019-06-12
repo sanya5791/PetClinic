@@ -25,6 +25,7 @@
         <tr>
             <th>Name</th>
             <th>Breed</th>
+            <th></th>
         </tr>
     </thead>
 
@@ -35,6 +36,9 @@
     <tr th:each="pet : ${pets}">
         <td><span th:text="${pet.getName()}">Name</span> </td>
         <td><span th:text="${pet.getBreed()}">Breed</span> </td>
+        <td>
+            <a th:href="@{/deletepet(pet_id=${pet.getId()})}">Delete</a>
+        </td>
     </tr>
     </tbody>
 

@@ -6,4 +6,5 @@ interface PetsService {
     fun addPet(petForm: PetForm)
     fun getAllPets(): List<PetForm>
     fun getPetsByHostId(hostId: Long): List<PetForm>
+    fun deletePet(petId: Long)
 }

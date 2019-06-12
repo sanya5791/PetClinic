@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse
 import javax.validation.Valid
 
 @Controller
-@RequestMapping(END_POINT)
 class PetsController(
         private val petsService: PetsService,
         private val hostsService: HostsService
@@ -22,7 +21,7 @@ class PetsController(
 
     private var hostId: Long = HOST_ID_UNDEFINED
 
-    @GetMapping
+    @GetMapping(path = [END_POINT])
     fun getPets(model: Model,
                 @RequestParam(value = PARAM_HOST_ID, required = false) hostIdParam: String?,
                 authentication: Authentication
@@ -57,7 +56,7 @@ class PetsController(
         model.addAttribute("petForm", PetForm("", "", 0))
     }
 
-    @PostMapping
+    @PostMapping(path =[END_POINT])
     fun addPet(
             @Valid @ModelAttribute("petForm") petForm: PetForm,
                bindingResult: BindingResult): String {
@@ -72,6 +71,13 @@ class PetsController(
         return "redirect:$END_POINT?$PARAM_HOST_ID=$hostId"
     }
 
+    @GetMapping(path = [DELETE_PET])
+    fun deletePet(model: Model,
+                  @RequestParam(value = PARAM_PET_ID, required = true) petId: Long): String {
+        petsService.deletePet(petId)
+        return "redirect:$END_POINT"
+    }
+
     @ExceptionHandler(Throwable::class)
     fun handleError(error: Throwable, response: HttpServletResponse): String {
         error.printStackTrace()
@@ -80,6 +86,7 @@ class PetsController(
 
     companion object {
         const val PARAM_HOST_ID = "host_id"
+        const val PARAM_PET_ID = "pet_id"
         const val END_POINT = "/pets"
         const val ADD_PET = "/addpet"
         const val DELETE_PET = "/deletepet"

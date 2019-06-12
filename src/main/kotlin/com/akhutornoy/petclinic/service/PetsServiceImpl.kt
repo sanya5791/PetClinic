@@ -18,6 +18,10 @@ class PetsServiceImpl(
         db.save(petEntity)
     }
 
+    override fun deletePet(petId: Long) {
+        db.deleteById(petId)
+    }
+
     override fun getAllPets(): List<PetForm> {
         return db.findAll()
                 .map(petFormMapper::map)

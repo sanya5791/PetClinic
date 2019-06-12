@@ -1,5 +1,6 @@
 package com.akhutornoy.petclinic.controller
 
+import com.akhutornoy.petclinic.controller.RestController.Companion.END_POINT
 import com.akhutornoy.petclinic.domain.rest.HostDto
 import com.akhutornoy.petclinic.domain.rest.PetDto
 import com.akhutornoy.petclinic.service.HostsRestService
@@ -9,18 +10,19 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@RequestMapping(END_POINT)
 class RestController(
         private val hostsService: HostsRestService,
         private val petsService: PetsRestService
 ) {
 
-    @GetMapping(path = [HostsController.END_POINT, HostsController.END_POINT_ROOT],
+    @GetMapping(path = [HostsController.END_POINT],
             consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
     fun getHosts(): List<HostDto> {
         return hostsService.getAll()
     }
 
-    @PostMapping(path = [AddHostController.END_POINT], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
+    @PostMapping(path = [AddHostController.ADD_HOST, AddHostController.REGISTRATION], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
     fun addHost(@RequestBody hostDto: HostDto
     ): HostDto {
         print("RestController: addHost(): $hostDto")
@@ -28,13 +30,13 @@ class RestController(
     }
 
     @GetMapping(path = [AddHostController.DELETE_HOST], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
-    fun deleteHost(@RequestParam(value = "host_id") hostId: Long) {
+    fun deleteHost(@RequestParam(value = AddHostController.PARAM_HOST_ID) hostId: Long) {
         hostsService.delete(hostId)
     }
 
     @GetMapping(path = [PetsController.END_POINT], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
     fun getPets(
-            @RequestParam(value = "host_id") hostId: Long
+            @RequestParam(value = AddHostController.PARAM_HOST_ID) hostId: Long
     ): List<PetDto> {
         return petsService.getPetsByHostId(hostId)
     }
@@ -49,6 +51,10 @@ class RestController(
     @GetMapping(path = [PetsController.DELETE_PET], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
     fun deletePet(@RequestParam(value = "pet_id") petId: Long) {
         petsService.delete(petId)
+    }
+
+    companion object {
+        const val END_POINT = "api"
     }
 
 }

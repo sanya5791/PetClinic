@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="US">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="US">
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link th:href="@{../css/style.css}" rel="stylesheet"/>
 
     <style>
         ul {
@@ -41,6 +43,42 @@
     <br>
     <label>
         <input type="text" th:name="lastName" th:field="*{lastName}">
+    </label>
+    <br>
+    <br>
+
+    Login:
+    <br>
+    <label>
+        <input type="text" th:name="login" th:field="*{login}">
+    </label>
+    <br>
+    <br>
+
+    Password:
+    <br>
+    <label>
+        <input type="text" th:name="password" th:field="*{password}">
+    </label>
+    <br>
+
+    Confirm Password:
+    <br>
+    <label>
+        <input type="text" th:name="passwordConfirm" th:field="*{passwordConfirm}">
+    </label>
+    <br>
+    <br>
+
+    Role:
+    <br>
+    <label>
+        <input type="radio" name="role" value="ADMIN" th:field="*{role}">
+        Admin
+    </label>
+    <label>
+        <input type="radio" name="role" value="USER" th:field="*{role}" checked >
+        User
     </label>
     <br>
     <br>

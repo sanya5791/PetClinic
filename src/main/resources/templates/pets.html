@@ -9,8 +9,15 @@
 <body>
 
 <h5><a href="/hosts"><< Back</a></h5>
+<h5>
+    <form  th:action="@{/logout}" method="post">
+       <button>LOGOUT</button>
+    </form>
+</h5>
 
-<h3>Pets of '<span th:text="${hostName}"></span>'</h3>
+<h3>
+    Pets of '<span th:text="${hostName}"></span>' (<span th:text="${hostLogin}"></span>)
+</h3>
 
 <table>
 

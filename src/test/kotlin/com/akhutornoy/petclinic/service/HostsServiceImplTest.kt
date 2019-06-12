@@ -1,9 +1,9 @@
 package com.akhutornoy.petclinic.service
 
-import com.akhutornoy.petclinic.domain.db.HostEntity
-import com.akhutornoy.petclinic.domain.mapper.HostEntityMapper
-import com.akhutornoy.petclinic.domain.mapper.HostFormMapper
+import com.akhutornoy.petclinic.domain.db.Role
+import com.akhutornoy.petclinic.domain.db.UserEntity
 import com.akhutornoy.petclinic.repository.DbHost
+import com.akhutornoy.petclinic.repository.DbUser
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -11,15 +11,14 @@ import org.mockito.Mockito
 
 class HostsServiceImplTest {
 
-    val dbUser = Mockito.mock(DbHost::class.java)
-
-    val namesService = HostsServiceImpl(dbUser, HostFormMapper(), HostEntityMapper())
+    val dbUser = Mockito.mock(DbUser::class.java)
+    val dbHost = Mockito.mock(DbHost::class.java)
 
     @Before
     fun setUp() {
-        val users = listOf(
-                HostEntity("firstName_1", "lastName_1", 1),
-                HostEntity("firstName_2", "lastName_2", 2)
+        val users = mutableListOf(
+                UserEntity("firstName_1", "lastName_1", Role.ADMIN),
+                UserEntity("firstName_2", "lastName_2", Role.USER)
         )
         Mockito.`when`(dbUser.findAll()).thenReturn(users)
     }

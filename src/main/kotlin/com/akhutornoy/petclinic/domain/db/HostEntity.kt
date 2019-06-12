@@ -10,6 +10,9 @@ class HostEntity(
         @Column(name = "last_name")
         var lastName: String,
 
+        @OneToOne(cascade = [CascadeType.ALL], orphanRemoval = true)
+        var userAuth: UserEntity,
+
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long? = null

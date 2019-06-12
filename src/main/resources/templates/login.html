@@ -1,20 +1,32 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="US">
 <head>
     <title>Spring Security Example </title>
-    <link  rel="stylesheet" href="../static/css/style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link th:href="@{../css/style.css}" rel="stylesheet"/>
+
     <style>
         .text-right {
             text-align: right;
         }
+
         .error-text {
             -webkit-text-fill-color: red;
         }
+
+        table tr th {
+            padding: 10px;
+        }
+
     </style>
 </head>
 <body>
-<p><a href="/about">About</a></p>
+<table>
+    <tr>
+        <th><a href="/about">About</a></th>
+        <th><a href="/registration">Register</a></th>
+    </tr>
+</table>
 
 <div th:if="${param.error}" class="error-text">
     Invalid username or password.
@@ -23,7 +35,7 @@
     You have been logged out.
 </div>
 
-<p><h1>Login page</h1></p>
+<h1>Login page</h1>
 
 <form th:action="@{/login}" method="post">
     <table>

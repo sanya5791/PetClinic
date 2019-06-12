@@ -3,10 +3,28 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{../css/style.css}" rel="stylesheet"/>
+
+    <style>
+        table {
+            border: 1px solid #0000FF;
+        }
+
+        table td {
+            border: 1px solid #0000FF;
+        }
+    </style>
+
 </head>
 
 <body>
+
+<h5>
+    <form  th:action="@{/logout}" method="post">
+        <button>LOGOUT</button>
+    </form>
+</h5>
+
 <h3>Hosts List:</h3>
 
 <table>
@@ -16,6 +34,7 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Pets</th>
+        <th></th>
     </tr>
     </thead>
 
@@ -27,7 +46,10 @@
         <td><span th:text="${host.getFirstName()}">First Name</span></td>
         <td><span th:text="${host.getLastName()}">Last Name</span></td>
         <td>
-            <a th:href="@{/pets(host-id=${host.getId()})}">Pets...</a>
+            <a th:href="@{/pets(host_id=${host.getId()})}">Pets...</a>
+        </td>
+        <td>
+            <a th:href="@{/deletehost(host_id=${host.getId()})}">Delete</a>
         </td>
     </tr>
     </tbody>

@@ -14,7 +14,11 @@ class MapperConfiguration {
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    fun userEntityMapper() = HostEntityMapper()
+    fun hostEntityMapper(userEntityMapper: UserEntityMapper) = HostEntityMapper(userEntityMapper)
+
+    @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    fun userEntityMapper() = UserEntityMapper()
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)

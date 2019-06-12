@@ -6,9 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping
 @Controller
 class AboutController {
 
-    @GetMapping("/about")
+    @GetMapping(END_POINT)
     fun showAbout(): String {
         return "about"
+    }
+
+    companion object {
+        const val END_POINT = "/about"
     }
 
 }

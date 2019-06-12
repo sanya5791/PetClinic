@@ -11,9 +11,14 @@ class LoginController (
         private val dbHost: DbHost
 ) {
 
-    @GetMapping("/login")
+    @GetMapping(path = [END_POINT, END_POINT_ROOT])
     fun showLogin(model: Model): String {
         return "login"
+    }
+
+    companion object {
+        const val END_POINT = "/login"
+        const val END_POINT_ROOT = "/"
     }
 
 }

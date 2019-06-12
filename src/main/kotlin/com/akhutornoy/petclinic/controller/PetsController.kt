@@ -36,8 +36,15 @@ class PetsController(
     }
 
     private fun putModelAttributesFromAuthentication(authentication: Authentication, model: Model) {
-        val isAdmin = Role.ADMIN == Role.valueOf(authentication.name.toUpperCase())
+        val isAdmin = isAdmin(authentication)
         model.addAttribute("isAdmin", isAdmin)
+    }
+
+    private fun isAdmin(authentication: Authentication): Boolean {
+        val findRoleAdmin = authentication.authorities
+                .map { it.authority }
+                .find { role -> Role.ADMIN.withPrefixROLE() == role }
+        return findRoleAdmin != null
     }
 
     private fun getHostForm(hostIdParam: String?, authentication: Authentication): HostForm? {

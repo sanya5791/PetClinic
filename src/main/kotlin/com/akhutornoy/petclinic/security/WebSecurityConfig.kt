@@ -1,9 +1,6 @@
 package com.akhutornoy.petclinic.security
 
-import com.akhutornoy.petclinic.controller.AboutController
-import com.akhutornoy.petclinic.controller.AddHostController
-import com.akhutornoy.petclinic.controller.HostsController
-import com.akhutornoy.petclinic.controller.LoginController
+import com.akhutornoy.petclinic.controller.*
 import com.akhutornoy.petclinic.domain.db.Role
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
@@ -32,9 +29,9 @@ class WebSecurityConfig(
         http
                 .authorizeRequests()
                     .antMatchers(
-                            AboutController.END_POINT,
                             "/css/**",
-                            AddHostController.REGISTRATION, AddHostController.ADD_HOST).permitAll() //allow access to all users
+                            AboutController.END_POINT,
+                            RegistrationController.REGISTRATION).permitAll() //allow access to all users
                     .antMatchers("/h2-console/**").hasRole("ADMIN") //allow h2 console access to admins only
                     .antMatchers(HostsController.END_POINT, HostsController.END_POINT_INDEX)
                         .hasRole(Role.ADMIN.name)

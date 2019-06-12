@@ -22,7 +22,7 @@ class RestController(
         return hostsService.getAll()
     }
 
-    @PostMapping(path = [AddHostController.ADD_HOST, AddHostController.REGISTRATION], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
+    @PostMapping(path = [AddHostController.ADD_HOST, RegistrationController.REGISTRATION], consumes = [MimeTypeUtils.APPLICATION_JSON_VALUE])
     fun addHost(@RequestBody hostDto: HostDto
     ): HostDto {
         print("RestController: addHost(): $hostDto")

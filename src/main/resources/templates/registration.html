@@ -31,7 +31,7 @@
 
 <body>
 
-<form th:action="@{/addhost}" th:object="${hostForm}" method="post">
+<form th:action="@{/registration}" th:object="${hostForm}" method="post">
     First name:
     <br>
     <label>
@@ -50,7 +50,7 @@
     Login:
     <br>
     <label>
-        <input type="password" th:name="login" th:field="*{login}">
+        <input type="text" th:name="login" th:field="*{login}">
     </label>
     <br>
     <br>
@@ -65,7 +65,7 @@
     Confirm Password:
     <br>
     <label>
-        <input type="text" th:name="passwordConfirm" th:field="*{passwordConfirm}">
+        <input type="password" th:name="passwordConfirm" th:field="*{passwordConfirm}">
     </label>
     <br>
     <br>
